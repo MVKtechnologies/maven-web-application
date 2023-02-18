@@ -28,7 +28,13 @@ stage ('Docker login and push')
 stage("deploy as docker container in deploy server"){
     sshagent(['Dockerserver']) {
     sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.134 docker rm -f vamsappcontainer || true"
-    sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.134 docker run -d --name vamsappcontainer vamshiveritas/maven-web-application:${buildnumber}"
+    sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.134 docker run -d --name vamsappcontainer vamshiveritas/maven-web-application:${buildnumber}" sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.11.189 docker rm -f vamsappcontainer || true"
+    sh "ssh ubuntu@172.31.11.189 aws ecr get-login-password --region ap-south-1 | ssh ubuntu@172.31.11.189 docker login --username AWS --password-stdin 778151802318.dkr.ecr.ap-south-1.amazonaws.com/maven-web-application:${buildnumber}"
+ 
+    //   AWS ECR repo pipeline 
+    //  sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.11.189 docker rm -f vamsappcontainer || true"
+    //  sh "ssh ubuntu@172.31.11.189 aws ecr get-login-password --region ap-south-1 | ssh ubuntu@172.31.11.189 docker login --username AWS --password-stdin 778151802318.dkr.ecr.ap-south-1.amazonaws.com/maven-web-application:${buildnumber}"
+ 
 }
 }
 }
