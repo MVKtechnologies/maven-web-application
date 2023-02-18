@@ -34,6 +34,8 @@ stage("deploy as docker container in deploy server"){
     //   AWS ECR repo pipeline 
     //  sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.11.189 docker rm -f vamsappcontainer || true"
     //  sh "ssh ubuntu@172.31.11.189 aws ecr get-login-password --region ap-south-1 | ssh ubuntu@172.31.11.189 docker login --username AWS --password-stdin 778151802318.dkr.ecr.ap-south-1.amazonaws.com/maven-web-application:${buildnumber}"
+    //     sh "ssh ubuntu@172.31.11.189 docker run -d --name AWSmavencontainer -p 9000:8080 778151802318.dkr.ecr.ap-south-1.amazonaws.com/maven-web-application:1"
+ 
  
 }
 }
