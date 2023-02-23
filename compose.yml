@@ -10,5 +10,3 @@ services:
 networks:
   vamnetwork:
     driver: bridge
-
-
