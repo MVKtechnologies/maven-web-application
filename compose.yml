@@ -4,7 +4,7 @@ services:
     image: vamshiveritas/maven-web-application:V
     restart: always
     ports:
-    - 9090:8080
+    - 9191:9191
     networks:
     - vamnetwork
 networks:
