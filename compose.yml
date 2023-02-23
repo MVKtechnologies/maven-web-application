@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mavenappcontainer:
+   image: vamshiveritas/maven-web-application:1
+   ports:
+   - 9090:9090
+   networks:
+     - vamnetwork
+volumes:
+  volTest1:
+    driver: local
+networks:
+  vamnetwork:
+    driver: bridge
